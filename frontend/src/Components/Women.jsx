@@ -13,12 +13,10 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 import React from "react";
-import Navbar from "./Navbar";
 
 function Women() {
   return (
-    <> 
-    <Navbar/>
+    <>
       <Box w={{ lg: "75%", md: "100%", sm: "100%" }} margin="auto" mt="100PX">
         <Flex
           h={{ lg: "71vh", md: "46vh", sm: "46vh" }}
@@ -349,7 +347,6 @@ function Women() {
                 borderRadius="none"
                 color="white"
                 w="10vw"
-                mt="1.5rem"
               >
                 SHOP NOW
               </Button>
@@ -364,7 +361,6 @@ function Women() {
                 borderRadius="none"
                 color="white"
                 w="10vw"
-                mt="1.5rem"
               >
                 SHOP NOW
               </Button>
@@ -445,7 +441,7 @@ function Women() {
               bgColor="#333333"
               borderRadius="none"
               color="white"
-              mt="1.9rem"
+              mt="1.6rem"
               w="10vw"
             >
               SHOP NOW

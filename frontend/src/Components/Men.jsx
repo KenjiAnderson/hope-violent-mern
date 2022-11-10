@@ -11,13 +11,10 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import React from "react";
-import Corousel from "./Corousel";
-import Navbar from "./Navbar";
 
 function Men() {
   return (
-    <>  
-    <Navbar/>
+    <>
       <Box w={{ lg: "75%", md: "100%", sm: "100%" }} margin="auto" mt="100PX">
         <Flex
           h={{ lg: "71vh", md: "46vh", sm: "46vh" }}
@@ -75,9 +72,7 @@ function Men() {
             <Heading fontWeight="400" fontSize="35px" mt="2rem">
               New Arrivals
             </Heading>
-          
-            <Box mt="2rem" mb="2rem" ><Corousel /></Box>
-           
+            <Box>corousel</Box>
             <Center>
               <Button
                 maxW={{ lg: "7vw", md: "10vw", sm: "9vw" }}
@@ -136,7 +131,7 @@ function Men() {
           </Flex>
         </Center>
 
-        <Box  mt="2rem" mb="2rem" ><Corousel/></Box>
+        <Box>Corousel</Box>
         <Center mt="3rem">
           <Flex>
             <Image
@@ -178,7 +173,7 @@ function Men() {
           </Flex>
         </Center>
 
-        <Box  mt="2rem" mb="2rem" ><Corousel/></Box>
+        <Box>Corousel</Box>
         <Center>
           <Button
             maxW={{ lg: "7vw", md: "10vw", sm: "9vw" }}
