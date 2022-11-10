@@ -1,12 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Layout from './Landing Page/Layout';
-import LoginMain from './Login/Main';
+import Corousel from './Components/Corousel';
+import Kids from './Components/Kids';
+import Men from './Components/Men';
+import MenProduct from './Components/MenProducts';
+import Navbar from './Components/Navbar';
+import Women from './Components/Women';
+import WomenProduct from './Components/WomenProduct';
 
 function App() {
   return (
     <>
-    <LoginMain/>
+    <Women/>
+    <Men/>
+    <Kids/> 
+
+     {/* <Corousel/>  */}
+
+     {/* <Navbar/> */}
+
+    <WomenProduct/>
+    <MenProduct/>
     </>
   );
 }
