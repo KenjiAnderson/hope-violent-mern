@@ -1,7 +1,7 @@
 import { Box, Heading, IconButton, Image, Text, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { BsStar,BsFillStarFill } from "react-icons/bs";
-export default function ProductCard({url}) {
+export default function ProductCard() {
   const [flag,setFlag]=useState(false)
   const toast = useToast()
   function handleFavourit(){
@@ -31,7 +31,7 @@ export default function ProductCard({url}) {
    
   }
   return (
-    <Box >
+    <Box>
       <Box
         p="1rem 0rem"
         cursor={"pointer"}
@@ -63,12 +63,12 @@ export default function ProductCard({url}) {
         <Image
           w="100%"
           h="80%"
-          src={url.image}
+          src="https://img.mytheresa.com/420/475/95/jpeg/catalog/product/20/P00702018.jpg"
         />
         <Text color={"#9e9d9d"} p="1rem">
-          {url.title}{" "}
+          ALEXANDER MCQUEEN{" "}
         </Text>
-        <span style={{ fontWeight: 800 }}>€ {url.price}</span>
+        <span style={{ fontWeight: 800 }}>€ 1,425</span>
       </Box>
     </Box>
   );

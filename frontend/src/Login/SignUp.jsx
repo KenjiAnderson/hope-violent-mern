@@ -13,63 +13,12 @@ import {
   Text,
   useColorModeValue,
   Select,
-  useToast,
 } from "@chakra-ui/react";
-import axios from "axios";
-import { useState } from "react";
 
 export default function SignUp() {
-  const toast = useToast();
-  const [user, setUser] = useState({
-    name: "",
-
-    email: "",
-    password: "",
-    comfirmpassword: "",
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setUser({ ...user, [name]: value });
-  };
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (user.password !== user.comfirmpassword) {
-      toast({
-        title: "Password did not match.",
-
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-    } else {
-      try {
-        let res = await axios.post(
-          "http://localhost:8080/api/user/signup",
-          user
-        );
-        toast({
-          title: "Account created successfully!",
-
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-      } catch (e) {
-        console.log(e);
-        toast({
-          title: e.response.data.message,
-
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    }
-  }
-
   return (
     <Flex
+      
       w={["100%", "100%", "50%"]}
       color="#757575"
       minH={"100vh"}
@@ -77,39 +26,22 @@ export default function SignUp() {
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
     >
-      <Stack spacing={8} w="100%" py={12}>
-        <Box
-          bg={"white"}
-          textAlign={"justify"}
-          p={8}
-          borderRight={["none", "none", "1px solid #cfcfcf"]}
-        >
-          <Box
-            fontSize={"2xl"}
-            textTransform={"uppercase"}
-            color="#111"
-            fontWeight={100}
-          >
+      <Stack spacing={8} w="100%" py={12} >
+        <Box bg={"white"} textAlign={"justify"} p={8} borderRight={"1px solid #cfcfcf"}>
+          <Box fontSize={"2xl"} textTransform={'uppercase'}  color="#111" fontWeight={100}>
             Create An Account
           </Box>
           <Text mt="3%">
             Please enter the following information to create your account.
           </Text>
-
           <Box mt="5%">
-            <CheckboxGroup colorScheme="blue">
-              <Stack
-                spacing={[1, 5]}
-                mt="2%"
-                direction={["column", "row", "row"]}
-              >
-                <Checkbox value="Ms." defaultValue>
-                  Ms.
-                </Checkbox>
-                <Checkbox value="Mrs.">Mrs.</Checkbox>
-                <Checkbox value="Mr.">Mr.</Checkbox>
-              </Stack>
-            </CheckboxGroup>
+           <CheckboxGroup  colorScheme="blue" defaultValue={["Ms."]}>
+            <Stack spacing={[1, 5]} mt="2%" direction={["column","row", "row"]}>
+              <Checkbox value="Ms.">Ms.</Checkbox>
+              <Checkbox value="Mrs.">Mrs.</Checkbox>
+              <Checkbox value="Mr.">Mr.</Checkbox>
+            </Stack>
+          </CheckboxGroup>
           </Box>
           <Stack spacing={5} mt="5%">
             <FormControl id="email">
@@ -122,39 +54,19 @@ export default function SignUp() {
               </Select>
             </FormControl>
             <FormControl id="email">
-              <Input
-                name="name"
-                type="first name"
-                onChange={(e) => handleChange(e)}
-                placeholder="First name*"
-              />
+              <Input type="first name" placeholder="First name*" />
             </FormControl>
             <FormControl id="password">
               <Input type="last name" placeholder="Last name*" />
             </FormControl>
             <FormControl id="password">
-              <Input
-                name="email"
-                type="email"
-                onChange={(e) => handleChange(e)}
-                placeholder="Email address*"
-              />
+              <Input type="email" placeholder="Email address*" />
             </FormControl>
             <FormControl id="password">
-              <Input
-                name="password"
-                type="password"
-                onChange={(e) => handleChange(e)}
-                placeholder="password*"
-              />
+              <Input type="password" placeholder="password*" />
             </FormControl>
-            <FormControl id="password">
-              <Input
-                name="comfirmpassword"
-                type="confirm password*"
-                onChange={(e) => handleChange(e)}
-                placeholder="confirm password*"
-              />
+            <FormControl id="password*">
+              <Input type="confirm password*" placeholder="Last name*" />
             </FormControl>
             <Stack spacing={10}>
               <Box
@@ -188,7 +100,6 @@ export default function SignUp() {
               <Button
                 bg={"#f2f2f2"}
                 color={"#222"}
-                onClick={handleSubmit}
                 borderRadius={"none"}
                 fontWeight={100}
                 fontSize={"12px"}
