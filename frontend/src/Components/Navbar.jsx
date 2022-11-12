@@ -1,23 +1,8 @@
-import React, { useContext } from "react";
-import { Box, Stack, Flex, Text, Spacer, Image, Input, useToast } from "@chakra-ui/react";
+import React from "react";
+import { Box, Stack, Flex, Text, Spacer, Image, Input } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import Logo from "./Logo";
-import { AppContext } from "../Context/Context";
 
 export default function Navbar() {
-  const toast=useToast()
-  const { token,nav } = useContext(AppContext);
-  function handleLogin(){
-    window.localStorage.removeItem("token")
-    toast({
-      title: 'Log out succssfully!',
-     
-      status: 'error',
-      duration: 9000,
-      isClosable: true,
-    })
-    nav("/login")
-  }
   return (
     <Box
       mb={7}
@@ -62,22 +47,14 @@ export default function Navbar() {
             <Text letterSpacing={1} cursor="pointer">
               Signup for Newsletter
             </Text>
-            <Link to="/login">
-              <Text letterSpacing={1} cursor="pointer">
-                My account
-              </Text>
-            </Link>
-            {token ? (
-              <Text letterSpacing={1} onClick={handleLogin} cursor="pointer">
-                Log out
-              </Text>
-            ) : (
-              <Link to="/login">
-                <Text letterSpacing={1} cursor="pointer">
-                  Sign In
-                </Text>
-              </Link>
-            )}
+
+            <Text letterSpacing={1} cursor="pointer">
+              My account
+            </Text>
+
+            <Text letterSpacing={1} cursor="pointer">
+              Sign In
+            </Text>
           </Flex>
         </Flex>
 
@@ -88,7 +65,12 @@ export default function Navbar() {
           ></Box>
           <Spacer />
           <Box pl={{ lg: "8rem", md: "0", sm: "0" }}>
-            <Logo />
+            <Image
+              w="18vw"
+              cursor="pointer"
+              src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/logo.png?v=20220906T141618"
+              alt="onkar"
+            />
           </Box>
           <Spacer />
           <Flex gap={2} alignItems="center" cursor="pointer">

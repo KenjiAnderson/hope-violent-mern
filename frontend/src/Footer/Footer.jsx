@@ -13,12 +13,10 @@ import {
   useColorModeValue,
   Button,
 } from "@chakra-ui/react";
-import { ReactNode, useContext } from "react";
+import { ReactNode } from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend, BiMobile } from "react-icons/bi";
 import { BsLinkedin, BsPinterest } from "react-icons/bs";
-import Logo from "../Components/Logo";
-import { AppContext } from "../Context/Context";
 
 
 
@@ -55,11 +53,6 @@ const ListHeader = ({ children }) => {
 };
 
 export default function LargeWithNewsletter() {
-  const {nav}=useContext(AppContext);
-  function handleLogin() {
-    window.scroll({top:0,left:0})
-    nav("/login")
-  }
   return (
     <Box
       w="90%"
@@ -74,7 +67,14 @@ export default function LargeWithNewsletter() {
           spacing={8}
         >
           <Stack spacing={6}>
-             <Logo/>
+          <Box >
+            <Image
+              w="18vw"
+              cursor="pointer"
+              src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/logo.png?v=20220906T141618"
+              alt="onkar"
+            />
+          </Box>
             <Text fontSize={"md"} color={"gray"}>
               © 2022 Violent Hope. All rights reserved
             </Text>
@@ -100,12 +100,10 @@ export default function LargeWithNewsletter() {
             <ListHeader color="#111">GET TREND UPDATES, STYLE TIPS AND MORE</ListHeader>
             <Stack direction={"row"}>
               <Input
-              onClick={handleLogin}
                 placeholder={"Your email address here..."}
                 borderRadius={"none"}
               />
               <Button
-               onClick={handleLogin}
                 p="0rem 2rem"
                 bg={"#f2f2f2"}
                 fontWeight={100}

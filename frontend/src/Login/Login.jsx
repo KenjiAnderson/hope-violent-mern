@@ -11,12 +11,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useContext, useState } from "react";
-
-import { useNavigate } from "react-router-dom";
-import { AppContext } from "../Context/Context";
+import React, { useState } from "react";
+import {useNavigate} from "react-router-dom"
 export default function Login() {
-  const { token,nav,setLoading,setError,setSuccess,loading,error,success } = useContext(AppContext);
   const toast = useToast();
 
   const [user, setUser] = useState({
@@ -31,53 +28,27 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true)
-  
     console.log(user);
-    if (token) {
+
+    try {
+      let res = await axios.post("http://localhost:8080/api/user/login", user);
       toast({
-        title: "You have already login!",
+        title: "Login successfully!",
 
         status: "success",
         duration: 9000,
         isClosable: true,
       });
-      nav("/")
-      setLoading(false)
-    } else {
-      try {
-        let res = await axios.post(
-          "http://localhost:8080/api/user/login",
-          user
-        );
-       
-      document.cookie = "MyMetheresaToken" + "=" + res.data.token;
-        
-       await  window.localStorage.setItem("token", res.data.token);
-        toast({
-          title: "Login successfully!",
+  
+    } catch (e) {
+      console.log(e);
+      toast({
+        title: e.response.data.message,
 
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-        setLoading(false)
-        setSuccess(true)
-        nav("/")
-       // window.location.reload();
-        
-      } catch (e) {
-        console.log(e);
-        setError(false)
-        setLoading(false)
-        toast({
-          title: e.response.data.message,
-
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
     }
   }
 
@@ -129,10 +100,6 @@ export default function Login() {
                 </Box>
                 <Box mt="5%">
                   <Button
-                  isLoading={loading?true:false}
-                    
-                  
-                  loadingText='Please wait...'
                     bg={"#111"}
                     color={"white"}
                     borderRadius={"none"}

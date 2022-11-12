@@ -1,5 +1,6 @@
 
 
+
 import './App.css';
 import Allroutes from './Components/AllRoutes'
 import Corousel from './Components/Corousel';
@@ -19,14 +20,12 @@ import FooterMain from './Footer/FooterMain';
 
 
 
+
 function App() {
   return (
     <>
-
-<Navbar/>
-<Allroutes/>
-<FooterMain/>
-   
+      <Allroutes />
+      
 
     </>
   );
