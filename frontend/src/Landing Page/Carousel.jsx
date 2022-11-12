@@ -19,7 +19,7 @@ const settings = {
   autoplaySpeed: 5000,
 };
 
-export default function Carousel({data}) {
+export default function Carousel() {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = useState(null);
@@ -40,14 +40,13 @@ export default function Carousel({data}) {
     "https://img.mytheresa.com/420/475/95/jpeg/catalog/product/e4/P00701157.jpg",
     "https://img.mytheresa.com/420/475/95/jpeg/catalog/product/1e/P00737342.jpg",
   ];
-
   return (
     
       
      
     <Box
       position={"relative"}
-      height={"70vh"}
+      height={"60vh"}
       width={"80%"}
       m="auto"
       mt="5%"
@@ -107,8 +106,8 @@ export default function Carousel({data}) {
        
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
 
-        {data && data.map((url, index) => (
-          <Box key={index}  p="1rem"  h="70vh" >
+        {arr.map((url, index) => (
+          <Box  p="1rem" h="70vh" >
             <ProductCard url={url} />
           </Box>
         ))}
