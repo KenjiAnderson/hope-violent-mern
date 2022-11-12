@@ -29,8 +29,6 @@ import Contactcart from "../Components/Contactcart";
       lastname: "",
       address: "",
     });
-
-    const [submit , setSubmit] = useState(false)
    
     const navigate = useNavigate()
     const toast = useToast()
@@ -44,7 +42,7 @@ import Contactcart from "../Components/Contactcart";
     const handleSubmit = (e) => {
         if(!info.prefix || !info.firstname || !info.lastname || !info.address)
         {
-         return   toast({
+          toast({
             title: 'please fill all the fields',
           
             status: 'error',
@@ -56,7 +54,7 @@ import Contactcart from "../Components/Contactcart";
           // localStorage.removeItem("address")
           localStorage.setItem("address",JSON.stringify(info))
   
-          setSubmit(true)
+          setInfo({ prefix: "",firstname: "",lastname: "", address: ""})
   
           toast({
             title: 'address successfully added',
@@ -70,38 +68,8 @@ import Contactcart from "../Components/Contactcart";
     }
   
     const handleprefix = (e) => {
-
       setInfo({...info,prefix:e.target.value})
     }
-
-    const handlenavigate = () => {
-
-      if(!info.prefix || !info.firstname || !info.lastname || !info.address)
-      {
-       return   toast({
-          title: 'please fill all the fields',
-        
-          status: 'error',
-          duration: 3500,
-          isClosable: true,
-        })
-      }
-
-      if(!submit)
-      {
-        return toast({
-          title: 'please submit info',
-        
-          status: 'error',
-          duration: 3000,
-          isClosable: true,
-        })
-      }
-      setInfo({ prefix: "",firstname: "",lastname: "", address: ""})
-      
-      navigate("/cart/delivery/pay")
-    }
-
     return (
       <>
         <Image margin={"auto"} w={["200px","300px","350px"]} mt={"100px"} src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/logo.png?v=20221109T180626" />
@@ -259,7 +227,7 @@ import Contactcart from "../Components/Contactcart";
             w={["120px","150px","190px"]}
             h="30px"
             cursor="pointer"
-            onClick={handlenavigate}
+            onClick={()=>navigate("/cart/delivery/pay")}
          
           >
             PROCEED TO CHECKOUT

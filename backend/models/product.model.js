@@ -9,7 +9,6 @@ const ProductSchema = new Schema(
     type: { type: String, required: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
-    itemNo:{type:String,require:true}
   },
   { timestamps: true }
 );
