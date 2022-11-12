@@ -6,9 +6,7 @@ const getCartProducts = asyncHandler(async (req, res) => {
     let cartProducts = await Cart.findOne({ user: _id });
     console.log("cart", cartProducts);
     // res.json({ products: cartProducts.cartItems });
-    res.json(cartProducts);        
-
-    // todo populate user and products.
+    res.json(cartProducts);
   });
 
   module.exports={getCartProducts}
