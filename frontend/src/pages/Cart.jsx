@@ -15,11 +15,12 @@ import {
   Th,
   Thead,
   Tr,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { CloseIcon, EmailIcon } from "@chakra-ui/icons";
 import { AiOutlineHeart } from "react-icons/ai";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import CartCard from "../components/CartCard";
 
 // import Cartmisc from "../components/Cartmisc";
@@ -29,8 +30,10 @@ import Cartmisc from "../Components/Cartmisc";
 import Contactcart from "../Components/Contactcart";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AppContext } from "../Context/Context";
 
 const Cart = () => {
+
 
   function getRChar() {
     return ((Math.random() * 26 + 10) | 0).toString(36).toUpperCase();
@@ -39,7 +42,7 @@ const Cart = () => {
   var s = getRChar() + getRChar() + Math.floor(Math.random() * 99999 * 7);
 
 
-
+  const toast = useToast()
   const [data1, setData1] = useState([]);
   const [subtotal,setSubtotal] = useState(0)
   const token =
@@ -56,6 +59,7 @@ const Cart = () => {
         .get(`http://localhost:8080/api/cart`, config)
         .then((res) => {
           // console.log(res.data[0].cartItems);
+          window.localStorage.setItem("qty",res.data[0].cartItems.length)
           setData1(res.data[0].cartItems);
         })
         .catch((err) => console.log(err));
@@ -110,7 +114,15 @@ const Cart = () => {
       },
     };
 
-    axios.post(`http://localhost:8080/api/cart/remove`,{ "cartProID":id},config).then(res=>handleGet())
+    axios.post(`http://localhost:8080/api/cart/remove`,{ "cartProID":id},config).then(res=>toast({
+
+      description:"Product removed",
+      status:"error",
+      duration:3500,
+      isClosable:true
+      
+
+    })).then(res=>handleGet())
   } 
 
   return (
@@ -191,7 +203,7 @@ const Cart = () => {
           handleplus={handleplus}
           handleminus={handleminus}
           handleRemove={handleRemove}
-          s={s}
+          itemnumber={elem.product.itemNo}
         />
       ))}
 
