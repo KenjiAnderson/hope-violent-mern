@@ -7,10 +7,23 @@ const getCartProducts = asyncHandler(async (req, res) => {
     path: "cartItems",
     populate: { path: "product" },
   });
+  // console.log("cart", cartProducts);
   res.send(cartProducts);
 });
 
+//   const addToCart = asyncHandler(async (req, res) => {
 
+//       const {cartItems} = req.body
+//       const newCart = {user: req.user, cartItems: cartItems}
+
+//       const cart = await Cart.create(newCart)
+//       // const fullcart = await Cart.findOne({_id: cart._id}).populate("cartItems")
+
+//       const fullcart = await Cart.findOne({_id: cart._id}).populate({path:"cartItems",populate: {path:"product"}})
+
+//       res.send({ message: "Product added to cart", data: fullcart });
+
+// })
 
 const addToCart = asyncHandler(async (req, res) => {
   try {
@@ -30,6 +43,9 @@ const addToCart = asyncHandler(async (req, res) => {
 
       const newCart = checkUserInCart.cartItems;
 
+      // newCart.push({product:cartItems[0].product,quantity:cartItems[0].quantity})
+      // const updatedCart = await Cart.findByIdAndUpdate(checkUserInCart._id,{cartItems: newCart})
+      // const fullcart = await Cart.findOne({_id: checkUserInCart._id}).populate({path:"cartItems",populate: {path:"product"}})
 
       const xyz = await Cart.updateMany(
         { _id: checkUserInCart._id },
@@ -38,6 +54,7 @@ const addToCart = asyncHandler(async (req, res) => {
       const fullcart = await Cart.findOne({
         _id: checkUserInCart._id,
       }).populate({ path: "cartItems", populate: { path: "product" } });
+      // use fullcart for showing updatedCart after adding new product
       return res.send({ fullcart });
     }
   } catch (err) {
@@ -85,6 +102,8 @@ const updateInCart = asyncHandler(async (req, res) => {
     path: "cartItems",
     populate: { path: "product" },
   });
+  // console.log(fullcart)
+  // const cart = await Cart.findByIdAndUpdate({_id:cartProducts._id},{$set:{cartItems:{quantity:qty}}})
 
   return res.send(fullcart);
 });
