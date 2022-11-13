@@ -31,7 +31,6 @@ export default function Navbar({ category }) {
 
   function handleLogin() {
     window.localStorage.removeItem("token");
-    window.localStorage.removeItem("qty");
     toast({
       title: "Log out succssfully!",
 
