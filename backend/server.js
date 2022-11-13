@@ -16,7 +16,7 @@ app.use(express.json());
 dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-var cookieParser = require('cookie-parser');
+var cookieParser = require("cookie-parser");
 app.use(cookieParser());
 // APIs
 
