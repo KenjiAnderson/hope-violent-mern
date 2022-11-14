@@ -60,6 +60,7 @@ export default function LargeWithNewsletter() {
     <Box
       w="90%"
       m="auto"
+      mt="70px"
       borderTop={"1px solid #cfcfcf"}
       borderBottom={"1px solid #cfcfcf"}
     >
@@ -117,9 +118,8 @@ export default function LargeWithNewsletter() {
             <ListHeader color="#111">
               GET TREND UPDATES, STYLE TIPS AND MORE
             </ListHeader>
-            <Stack  zIndex={-1} direction={"row"}>
+            <Stack direction={"row"}>
               <Input
-             
                 onClick={handleLogin}
                 placeholder={"Your email address here..."}
                 borderRadius={"none"}

@@ -3,8 +3,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Summary = () => {
-  document.title="Your order summary";
-
   const navigate = useNavigate();
 
   return (
