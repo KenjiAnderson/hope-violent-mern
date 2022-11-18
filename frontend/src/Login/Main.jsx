@@ -3,7 +3,6 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 
 export default function LoginMain() {
-  document.title="Login/Signup"
   return (
     <Stack
       minH={"100vh"}
