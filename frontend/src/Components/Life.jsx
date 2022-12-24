@@ -16,7 +16,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Carousel from "../Landing Page/Carousel";
 import men from "../Landing Page/Data/men.json";
-import Corousel from "./Corousel";
 import Navbar2 from "./dropdownNav/Navbar2";
 function Life() {
   document.title = "Men's Luxury Fashion & Designer Shopping | Violent Hope";
@@ -169,7 +168,6 @@ function Life() {
             </Box>
           </Box>
         </Box>
-        <Corousel mt="1rem" />
 
         <Center>
           <Box lineHeight="1rem" mt="2rem">
